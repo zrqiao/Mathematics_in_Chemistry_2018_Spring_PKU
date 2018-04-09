@@ -8,7 +8,7 @@ for i in range(9):
     for j in range(9):
         hess[i][j] = hess[i][j]/(math.sqrt(mass[i])*math.sqrt(mass[j]))
 freq2, mode=np.linalg.eig(hess)
-print(freq2,mode)
+#print(freq2,mode)
 freq=[0 for i in range(9)]
 Coor0=[0 for i in range(9)]
 Coor=[[0 for i in range(9)]for t in range (1000)]
