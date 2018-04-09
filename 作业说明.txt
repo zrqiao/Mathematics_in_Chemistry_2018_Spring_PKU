@@ -1,0 +1,15 @@
+作业1 Normal_Mode_Analysis
+正频率（单位cm-1）：Frequencies.dat
+第0-2个Mode的动画：Mode0/Mode1/Mode2.mpg
+代码：py文件
+
+作业2 1D_Quantum_Systems
+结果均为原子单位制
+本征函数（对本征能量平移）：Eigenfunction.jpg
+每个本征态的总能量、动能、势能列表：Energy.txt 作在同一图像上：EnergyPlot.jpg
+总能量-蓝 动能-黄 势能-绿
+P不确定性：P_Fluctuation.txt
+X不确定性：X_Fluctuation.txt
+系综能量、动能、势能平均：EnsembleEnergy.txt
+热容：HeatCapacity.txt
+位置空间正则分布：CanonicalLocationDistribution.jpg
