@@ -16,7 +16,7 @@ freq=np.zeros(9)
 freqr=np.zeros(9)
 Coor0=np.zeros((9,500))
 Coor=np.zeros((500,9))
-part=np.zeros(3)
+Part=np.zeros(3)
 
 iniCoor = open('materials/config_opt.dat')
 
@@ -71,23 +71,25 @@ out.write('Temperature: 300K\n')
 for i in range(3):
     n=ni[i]
     Boltzmann_List[i] = np.exp(-(StateList - 1 / 2) * freq[i] * 3.1577464e5 / (T))
-    part[i]=np.sum(Boltzmann_List[i])
-    Fluct[i]= (np.dot(Boltzmann_List[i],StateList))/freq[i]/part[i]
+    Part[i]=Boltzmann_List[i][0]+Boltzmann_List[i][1]#Test
+ #   out.write(np.str(Part[i])+'\n')
+    Part[i]=np.sum(Boltzmann_List[i])
+    Fluct[i]= (np.dot(Boltzmann_List[i],StateList)) / freq[i] / Part[i]
     EkO[i]=np.dot(Boltzmann_List[i],StateList)/2 *np.linalg.norm(mode[i][3:6])**2/np.linalg.norm(mode[i])**2
     EkH[i] = (np.dot(Boltzmann_List[i], StateList) / 2 - EkO[i])/2
     out.write('Mode ' + np.str(i + 1) + '    Frequency: ' + np.str(
-        freqr[i]) + 'cm-1    Partition function per mode: ' + np.str(part[n]) + '\n')
+        freqr[i]) + 'cm-1    Partition function per mode: ' + np.str(Part[n]) + '\n')
 dD1 = np.sqrt(Fluct[0] * dD0_OH1_m1 ** 2 + Fluct[1] * dD0_OH1_m2 ** 2)
 dD2 = np.sqrt(Fluct[0] * dD0_OH2_m1 ** 2 + Fluct[1] * dD0_OH2_m2 ** 2)
 dTheta = np.sqrt(Fluct[2]) * dTheta0
 
-out.write('Partition function: ' + np.str(np.prod(part)) + '\n'
-          + 'O-H1 bond length fluctuation: '+np.str(dD1)+'\n'
+out.write('Partition function: ' + np.str(np.prod(Part)) + '\n'
+          + 'O-H1 bond length fluctuation: ' + np.str(dD1) +'\n'
           + 'O-H2 bond length fluctuation: ' + np.str(dD2) + '\n'
           + 'H-O-H bond angle fluctuation: ' + np.str(dTheta) + '\n')
 
-out.write('Kinetic Energy:\n' + 'O '+np.str(np.sum(EkO))+'\n'
-          + 'H ' + np.str(np.sum(EkH)) + '\n')
+out.write('Kinetic Energy:\n' + 'O '+np.str(np.sum(EkO))+' a.u.\n'
+          + 'H ' + np.str(np.sum(EkH)) + ' a.u.\n')
 
 
 
@@ -96,22 +98,28 @@ T=0#Ground state only
 out.write('Temperature: 0K\n')
 for i in range(3):
     n=ni[i]
-    part[i]=1
-    Fluct[i] = StateList[0] / freq[i] / part[i]
+    Part[i]=1
+    Fluct[i] = StateList[0] / freq[i] / Part[i]
     EkO[i] = StateList[0] / 2 * np.linalg.norm(mode[i][3:6]) ** 2 / np.linalg.norm(mode[i]) ** 2
     EkH[i] = (StateList[0] / 2 - EkO[i]) / 2
 
-    out.write('Mode '+np.str(i+1)+'    Frequency: '+np.str(freqr[i])+'cm-1    Partition function per mode: '+np.str(part[n])+'\n')
+    out.write('Mode ' + np.str(i+1) +'    Frequency: ' + np.str(freqr[i]) +'cm-1    Partition function per mode: ' + np.str(Part[n]) + '\n')
 dD1=np.sqrt((1/2)/freq[0]*dD0_OH1_m1**2+(1/2)/freq[1]*dD0_OH1_m2**2)
 dD2=np.sqrt((1/2)/freq[0]*dD0_OH2_m1**2+(1/2)/freq[1]*dD0_OH2_m2**2)
 dTheta=np.sqrt((1/2)/freq[2])*dTheta0
-out.write('Partition function: ' + np.str(np.prod(part)) + '\n'
-          + 'O-H1 bond length fluctuation: '+np.str(dD1)+'\n'
+out.write('Partition function: ' + np.str(np.prod(Part)) + '\n'
+          + 'O-H1 bond length fluctuation: ' + np.str(dD1) +'\n'
           + 'O-H2 bond length fluctuation: ' + np.str(dD2) + '\n'
           + 'H-O-H bond angle fluctuation: ' + np.str(dTheta) + '\n')
-out.write('Kinetic Energy:\n' + 'O '+np.str(np.sum(EkO))+'\n'
-          + 'H ' + np.str(np.sum(EkH)) + '\n')
+out.write('Kinetic Energy:\n' + 'O '+np.str(np.sum(EkO))+' a.u.\n'
+          + 'H ' + np.str(np.sum(EkH)) + ' a.u.\n')
+
 out.write('Wigner Distribution')
-
-
+'''
+WignerHm =
+  Parallelize[
+   Table[NIntegrate[EF[[-n]] EF2[[-n]] Cos[ y p], {y, -L, L},
+     Method -> "AdaptiveMonteCarlo"], {n, 1, 20}, {xi, -8, 8,
+     0.4}, {p, -8, 8, 0.4}]];
+'''
 out.close()

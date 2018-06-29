@@ -1,0 +1,29 @@
+Calculating Modes...Finished
+
+Calculating partition functions...
+Average O_H1 length: 1.8100483974532435
+Average O_H2 length: 1.8100483974532438
+Average bond angle: 104.50776611591948
+Temperature: 300K
+Mode 1    Frequency: 3942.938887075006cm-1    Partition function per mode: 1.0000000061303862
+Mode 2    Frequency: 3831.907323029842cm-1    Partition function per mode: 1.0000000104411626
+Mode 3    Frequency: 1648.485505210407cm-1    Partition function per mode: 1.0003686616584522
+Partition function: 1.0003686782361103
+O-H1 bond length fluctuation: 0.12772365408729267
+O-H2 bond length fluctuation: 0.12772365408729286
+H-O-H bond angle fluctuation: 0.0774044369689019
+Kinetic Energy:
+O 0.3564332617523564 a.u.
+H 0.19692165743792692 a.u.
+Temperature: 0K
+Mode 1    Frequency: 3942.938887075006cm-1    Partition function per mode: 1.0
+Mode 2    Frequency: 3831.907323029842cm-1    Partition function per mode: 1.0
+Mode 3    Frequency: 1648.485505210407cm-1    Partition function per mode: 1.0
+Partition function: 1.0
+O-H1 bond length fluctuation: 0.1277236530301767
+O-H2 bond length fluctuation: 0.12772365303017685
+H-O-H bond angle fluctuation: 0.07737591669132791
+Kinetic Energy:
+O 0.35617203623888216 a.u.
+H 0.19691398188055892 a.u.
+Wigner Distribution
